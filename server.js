@@ -3,10 +3,15 @@ const mongoose = require('mongoose')
 const app = express();
 const articlesRouter = require("./routes/articles");
 
-mongoose.connect('mongodb://localhost/blog',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect('mongodb://127.0.0.1/blog', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('MongoDB Connected');
+}).catch((err) => {
+  console.log('MongoDB Connection Error: ', err);
+});
+
 
 app.set("view engine", "ejs");
 
